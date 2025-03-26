@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\projetosETestes\cursojavascript\djangoIA\venv"
+VIRTUAL_ENV="C:\projetosETestes\cursojavascript\nicoBot\projeto-detector-de-fake-news\detector-de-fake-news-api\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
