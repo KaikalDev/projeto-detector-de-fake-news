@@ -10,7 +10,7 @@ interface Request {
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://127.0.0.1:8000/api'
+    baseUrl: 'https://api-detector-fake-news.onrender.com/api'
   }),
   endpoints: (builder) => ({
     postTitle: builder.mutation<Response, Request>({
