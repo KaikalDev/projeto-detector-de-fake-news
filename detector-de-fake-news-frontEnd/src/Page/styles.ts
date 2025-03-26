@@ -60,6 +60,10 @@ export const Section = styled.section`
       bottom: 10px;
       right: 10px;
       cursor: pointer;
+
+      &:disabled {
+        cursor: default;
+      }
     }
   }
 `
