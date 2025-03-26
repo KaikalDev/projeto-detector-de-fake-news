@@ -6,7 +6,7 @@ from .models.model import load_models
 @api_view(["POST"])
 def handleText(request):
     if request.method == "POST":
-        dadosBruto = TitleCheckerSerializer(request.data)
+        dadosBruto = TitleCheckerSerializer(data=request.data)
 
         if dadosBruto.is_valid():
             modelo_nb, modelo_vect = load_models()
