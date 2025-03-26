@@ -3,13 +3,14 @@ import buscar from '../assets/icons/buscar.svg'
 import { Header, Section } from './styles'
 import { usePostTitleMutation } from '../service/api'
 import { useState } from 'react'
+import Loader from '../loader'
 
 interface Response {
   respostaPrevisao: boolean
 }
 
 const Page = () => {
-  const [purchase] = usePostTitleMutation()
+  const [purchase, { isLoading }] = usePostTitleMutation()
   const [text, setText] = useState('')
   const [response, setResponse] = useState<boolean | null>(null)
 
@@ -40,8 +41,8 @@ const Page = () => {
             onChange={(e) => setText(e.target.value)}
             placeholder="Titulo da noticia"
           ></textarea>
-          <button type="submit">
-            <img src={buscar} alt="" />
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? <Loader /> : <img src={buscar} alt="Consultar" />}
           </button>
         </form>
         {response !== null && (
