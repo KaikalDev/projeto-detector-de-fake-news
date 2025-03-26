@@ -12,7 +12,7 @@ def handleText(request):
             modelo_nb, modelo_vect = load_models()
 
             dadosValidados = dadosBruto.validated_data['news']
-            dadosValidados = [dadosBruto]
+            dadosValidados = [dadosValidados]
 
             dadosVetorizados = modelo_vect.transform(dadosValidados)
 
