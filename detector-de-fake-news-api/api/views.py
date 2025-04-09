@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from .serializers import TitleCheckerSerializer
 from .models.model import load_models
-
+from .geminiService import enviar_prompt
 
 @api_view(["POST"])
 def handleText(request):
@@ -34,8 +34,21 @@ def handleText(request):
 @api_view(["POST"])
 def handleChatBotResponse(request):
     if request.method == "POST":
-        
-        pass
+        prompt = request.data.get("prompt")
+        historico = request.session.get("historico", [])
+
+        if not prompt:
+            return Response({"error": "O campo 'prompt' é obrigatório."}, status=status.HTTP_400_BAD_REQUEST)
+
+        resposta = enviar_prompt(prompt, historico)
+
+        if isinstance(resposta, Exception):
+            return Response({"error": f"Erro ao enviar mensagem para o Gemini: {str(resposta)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        request.session["historico"] = resposta["historico"]
+
+        return Response({"resposta": resposta})
+
     else:
         return Response({"error":'Método inválido para esta rota da API! Só POSt é permitido'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     
