@@ -3,6 +3,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from .serializers import TitleCheckerSerializer
 from .models.model import load_models
+
+
 @api_view(["POST"])
 def handleText(request):
     if request.method == "POST":
@@ -25,8 +27,15 @@ def handleText(request):
         else:
             return Response(dadosBruto.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response({"error": "Método inválido para a api! Só POST é permitido!"},status=status.HTTP_405_METHOD_NOT_ALLOWED)
+        return Response({"error": "Método inválido para esta rota da API! Só POSt é permitido"},status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 
+@api_view(["POST"])
+def handleChatBotResponse(request):
+    if request.method == "POST":
+        
+        pass
+    else:
+        return Response({"error":'Método inválido para esta rota da API! Só POSt é permitido'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     
