@@ -1,23 +1,6 @@
 import styled from 'styled-components'
 
-export const Header = styled.header`
-  padding: 8px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  h1 {
-    font-size: 24px;
-    align-items: center;
-    display: flex;
-    gap: 8px;
-    img {
-      width: 60px;
-    }
-  }
-`
-
-export const Section = styled.section`
+export const DetectorContainer = styled.section`
   width: 100vw;
   height: 100vh;
   display: flex;
