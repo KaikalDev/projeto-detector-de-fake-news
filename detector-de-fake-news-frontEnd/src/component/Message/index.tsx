@@ -1,4 +1,5 @@
 import { BalloonMessage } from './styles'
+import ReactMarkdown from 'react-markdown'
 
 type Param = {
   role: string
@@ -8,7 +9,7 @@ type Param = {
 const Message = ({ part, role }: Param) => (
   <BalloonMessage isBot={role != 'user'}>
     <strong>{role == 'user' ? 'You' : 'NicoBot'}:</strong>
-    <p>{part}</p>
+    <ReactMarkdown>{part}</ReactMarkdown>
   </BalloonMessage>
 )
 
